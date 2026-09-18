@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #131314;
+  --bg-panel: #1e1f20;
+  --bg-panel-subtle: #232427;
+  --bg-card: #28292a;
+  --bg-card-hover: #333538;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: #a8c7fa;
+  --text-primary: #f1f3f4;
+  --text-secondary: #9aa0a6;
+  --text-muted: #5f6368;
+  --accent-blue: #a8c7fa;
+  --accent-blue-dark: #1b3a6b;
+  --accent-white: #ffffff;
+  --pill-bg: #28292a;
+  --pill-bg-hover: #36383b;
+  font-family: 'Google Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Base interactive elements */
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Header */
+.nlm-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: var(--bg-canvas);
+  border-bottom: 1px solid transparent;
+  user-select: none;
+}
+
+/* Panel Layout */
+.nlm-workspace {
+  display: grid;
+  grid-template-columns: 280px 1fr 340px;
+  gap: 10px;
+  height: calc(100vh - 56px);
+  padding: 0 12px 10px 12px;
+}
+
+.nlm-panel {
+  background-color: var(--bg-panel);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.nlm-panel-header {
+  height: 48px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+
+.nlm-panel-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+/* Pills */
+.nlm-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--pill-bg);
+  color: var(--text-primary);
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.nlm-pill-btn:hover {
+  background-color: var(--pill-bg-hover);
+}
+
+.nlm-pill-btn-white {
+  background-color: var(--accent-white);
+  color: #1f1f1f;
+  border-radius: 9999px;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+}
+
+.nlm-pill-btn-white:hover {
+  background-color: #e5e5e5;
+}
+
+/* Studio Grid */
+.studio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.studio-card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.studio-card:hover {
+  background-color: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Chat Input Bar */
+.chat-input-container {
+  background-color: var(--bg-panel);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px 6px 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-input-container:focus-within {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 1px var(--accent-blue);
+}
+
+/* Pulsing and micro-animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
